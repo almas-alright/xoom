@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
-use App\Training;
+use App\product;
 use Carbon\Carbon;
 
 class AdminProductController extends Controller
@@ -23,7 +23,7 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return view('admin.training.index');
+        return view('admin.product.index');
     }
 
     /**
@@ -33,7 +33,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        return view('admin.training.new');
+        return view('admin.product.new');
     }
 
     /**
@@ -57,17 +57,17 @@ class AdminProductController extends Controller
 
         $sa = Carbon::createFromFormat('m-d-Y',$request->input('start_at'))->toDateString();
         $ea = Carbon::createFromFormat('m-d-Y',$request->input('end_at'))->toDateString();
-        $training = new Training;
-        $training->slug = str_slug($request->input('name'));
-        $training->name = $request->input('name');
-        $training->description = $request->input('description');
-        $training->price = $request->input('price');
-        $training->start_at = $sa;
-        $training->end_at = $ea;
+        $product = new product;
+        $product->slug = str_slug($request->input('name'));
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->start_at = $sa;
+        $product->end_at = $ea;
 
-        $training->save();
+        $product->save();
 
-        return redirect('c-admin/training');
+        return redirect('c-admin/product');
 
     }
 
@@ -90,10 +90,10 @@ class AdminProductController extends Controller
      */
     public function edit($id)
     {
-        $training = Training::find($id);
-        $training->start_at = Carbon::createFromFormat('Y-m-d', $training->start_at)->format('m-d-Y');
-        $training->end_at = Carbon::createFromFormat('Y-m-d', $training->end_at)->format('m-d-Y');
-        return view('admin.training.edit', compact('training'));
+        $product = product::find($id);
+        $product->start_at = Carbon::createFromFormat('Y-m-d', $product->start_at)->format('m-d-Y');
+        $product->end_at = Carbon::createFromFormat('Y-m-d', $product->end_at)->format('m-d-Y');
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -116,17 +116,17 @@ class AdminProductController extends Controller
 
         $sa = Carbon::createFromFormat('m-d-Y',$request->input('start_at'))->toDateString();
         $ea = Carbon::createFromFormat('m-d-Y',$request->input('end_at'))->toDateString();
-        $training = Training::find($id);
-        $training->slug = str_slug($request->input('name'));
-        $training->name = $request->input('name');
-        $training->description = $request->input('description');
-        $training->price = $request->input('price');
-        $training->start_at = $sa;
-        $training->end_at = $ea;
+        $product = product::find($id);
+        $product->slug = str_slug($request->input('name'));
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->start_at = $sa;
+        $product->end_at = $ea;
 
-        $training->save();
+        $product->save();
 
-        return redirect('c-admin/training');
+        return redirect('c-admin/product');
     }
 
     /**
@@ -142,14 +142,14 @@ class AdminProductController extends Controller
 
     public function getAll()
     {
-        $trainings = Training::all();
+        $products = product::all();
         
-         return Datatables::of($trainings)
+         return Datatables::of($products)
          ->removeColumn('description')
          ->addIndexColumn()
          ->editColumn('price','$ {{ $price }}')
-         ->addColumn('operations','<a class="btn btn-xs btn-info" href="{{ route( \'training.edit\', [$id]) }}"><i class="fa fa-pencil-square-o"></i></a>
-                    <a class="btn btn-xs btn-danger" href="{{ route( \'training.destroy\', [$id]) }}"><i class="fa fa-trash-o"></i></a>')
+         ->addColumn('operations','<a class="btn btn-xs btn-info" href="{{ route( \'product.edit\', [$id]) }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="btn btn-xs btn-danger" href="{{ route( \'product.destroy\', [$id]) }}"><i class="fa fa-trash-o"></i></a>')
          ->rawColumns(['operations'])
          ->make(true);
     }

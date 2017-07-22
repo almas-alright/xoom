@@ -10,7 +10,7 @@
     <div class="outer">
         <div class="inner bg-light lter">
             <div class="col-lg-12">
-                <h1>All Trainings</h1>
+                <h1>All Products</h1>
                 <hr>
 <table id="users" class="table table-hover table-condensed">
     <thead>
@@ -47,7 +47,7 @@ $(document).ready(function() {
    $('#users').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "{{ route('abcd.training') }}",
+        "ajax": "{{ route('abcd.product') }}",
         "columns": [
             {data: 'DT_Row_Index', name: 'DT_Row_Index'},
             {data: 'name', name: 'name'},
