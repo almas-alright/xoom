@@ -28,7 +28,7 @@
                 @hasSection('title')
                 	@yield('title')
                 @else
-                Add New Training
+                Add New Product
                 @endif
                 </h1>
                 <hr>
@@ -40,7 +40,7 @@
 				        <header>
 				            <div class="icons"><i class="fa fa-edit"></i></div>
 				            
-				            <h5>Trainings Data</h5>
+				            <h5>Products Data</h5>
 
 				            <!-- .toolbar -->
 				            <div class="toolbar">
@@ -58,12 +58,12 @@
 				            </div>            <!-- /.toolbar -->
 				        </header>
 				        <div id="div-1" class="body collapse in" aria-expanded="true" style="">
-				            <form method="post" action="{{ route('training.store') }}@yield('edtID')" class="form-horizontal">
+				            <form method="post" action="{{ route('product.store') }}@yield('edtID')" class="form-horizontal">
 				            	{{ csrf_field() }}
 				            	@section('editMethod')
 				            		@show
 				                <div class="form-group">
-				                    <label for="text1" class="control-label col-lg-4">Training Title</label>
+				                    <label for="text1" class="control-label col-lg-4">Product Title</label>
 
 				                    <div class="col-lg-8">
 				                        <input id="text1" name="name" placeholder="title" class="form-control" value="@yield('edtName')" type="text">
@@ -72,7 +72,7 @@
 				                <!-- /.form-group -->                
 
 				                <div class="form-group">
-				                    <label for="autosize" class="control-label col-lg-4">Training Description</label>
+				                    <label for="autosize" class="control-label col-lg-4">Product Description</label>
 
 				                    <div class="col-lg-8">
 				                        <textarea name="description" id="ckeditor" class="ckeditor">@yield('edtDescription')</textarea>
@@ -80,7 +80,7 @@
 				                </div>
 
 				                <div class="form-group">
-		                        <label class="control-label col-lg-4" for="price">Course Cost</label>
+		                        <label class="control-label col-lg-4" for="price">Product Price</label>
 
 		                        <div class="col-lg-3">
 		                            <input name="price" class="form-control" value="@yield('edtPrice')"  id="price" type="text">
