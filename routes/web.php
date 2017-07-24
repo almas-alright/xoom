@@ -29,7 +29,7 @@ Route::post('xoomin-password/reset', 'Admin\AdminResetPasswordController@reset')
 Route::get('xoomin-password/reset/{token}', 'Admin\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
 
-// ADMIN RouteServiceProvider
+// ADMIN Route
 
 Route::get('xoomin/home', 'Admin\TestController@index')->name('abcd.home');
 Route::any('xoomin/users', 'Admin\AdminUserController@getAll')->name('abcd.users');
@@ -46,5 +46,8 @@ Route::any('xoomin/products', 'Admin\AdminProductController@getAll')->name('abcd
 // ADMIN OPTION
 Route::get('xoomin/social-links', 'Admin\AdminOptionController@socialLinks')->name('option.social');
 Route::post('xoomin/option', 'Admin\AdminOptionController@store')->name('option.store');
+
+// ADMIN MEDIA MANAGER
+Route::get('xoomin/media', 'Admin\AdminMediaController@index')->name('media.index');
 
 
