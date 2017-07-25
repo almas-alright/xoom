@@ -16,6 +16,7 @@ class AdminMediaController extends Controller
     }
 
     public function store(request $request){
-    	
+    	$request->file('m_files');
+    	return $request->m_files->store('public/media');
     }
 }
