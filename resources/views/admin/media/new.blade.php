@@ -6,7 +6,8 @@
 </head>
 <body>
 	
-	<form action="" enctype="mutipart/form-data" method="post">
+	<form action="{{ route('media.store') }}" enctype="mutipart/form-data" method="post">
+		{{ csrf_field() }}
 		<input type="file" name="files">
 		<input type="submit" value="Upload" >
 	</form>

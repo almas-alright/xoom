@@ -14,4 +14,8 @@ class AdminMediaController extends Controller
     public function index(){
     	return view('admin.media.new');
     }
+
+    public function store(request $request){
+    	
+    }
 }

@@ -49,5 +49,6 @@ Route::post('xoomin/option', 'Admin\AdminOptionController@store')->name('option.
 
 // ADMIN MEDIA MANAGER
 Route::get('xoomin/media', 'Admin\AdminMediaController@index')->name('media.index');
+Route::post('xoomin/media/store', 'Admin\AdminMediaController@store')->name('media.store');
 
 
