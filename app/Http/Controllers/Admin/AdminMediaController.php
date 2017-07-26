@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Requests\UploadRequest;
 
 class AdminMediaController extends Controller
 {
@@ -15,8 +16,15 @@ class AdminMediaController extends Controller
     	return view('admin.media.new');
     }
 
-    public function store(request $request){
-    	$request->file('m_files');
-    	return $request->m_files->store('public/media');
+    public function store(Request $request){
+
+    	//var_dump($request->all());
+    	// $request->file('m_files');
+    	// return $request->m_files->store('public/media');
+    	$size = count($request->file('m_files'));
+    	foreach ($request->file('m_files') as $mfile) {
+            $mfile->store('public/media');
+        }
+
     }
 }
