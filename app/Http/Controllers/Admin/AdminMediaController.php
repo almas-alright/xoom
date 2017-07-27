@@ -23,7 +23,8 @@ class AdminMediaController extends Controller
     	// return $request->m_files->store('public/media');
     	$size = count($request->file('m_files'));
     	foreach ($request->file('m_files') as $mfile) {
-            $mfile->store('public/media');
+    		$name = $mfile->getClientOriginalName();
+            $mfile->storeAs('public/media', $name);
         }
 
     }
