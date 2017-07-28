@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Requests\UploadRequest;
-
+use App\Media;
 class AdminMediaController extends Controller
 {
     public function __construct(){
@@ -17,15 +17,26 @@ class AdminMediaController extends Controller
     }
 
     public function store(Request $request){
-
-    	//var_dump($request->all());
-    	// $request->file('m_files');
-    	// return $request->m_files->store('public/media');
+    	$index = date('Y-M');    	
     	$size = count($request->file('m_files'));
     	foreach ($request->file('m_files') as $mfile) {
     		$name = $mfile->getClientOriginalName();
-            $mfile->storeAs('public/media', $name);
+    		$type = $this->getType($mfile);
+    		$path = 'public/media/'.$index;
+    		$media = new Media;
+    		$media->name = $name;
+    		$media->path = $path;
+    		$media->type = $type;
+    		$media->save();
+            $mfile->storeAs($path, $name);
         }
 
+    }
+
+    private function getType($media){    	
+    	// $ext = $media->getClientOriginalExtension();    	
+    	$ext = $media->getMimeType();
+    	$type = explode('/', trim($ext));
+    	return $type[0];  	
     }
 }
