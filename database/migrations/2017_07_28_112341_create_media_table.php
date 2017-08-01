@@ -17,7 +17,7 @@ class CreateMediaTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->string('path');
-            $table->string('type', 8);
+            $table->string('type', 23);
             $table->timestamps();
         });
     }
