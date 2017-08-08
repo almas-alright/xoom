@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Requests\UploadRequest;
 use App\Media;
+use App\Mail\Welcome;
 class AdminMediaController extends Controller
 {
     public function __construct(){
@@ -13,7 +14,10 @@ class AdminMediaController extends Controller
     }
 
     public function index(){
+        \Mail::to('engage@defttechltd.com','nazmul@defttechltd.com', 'shamol@defttechltd.com', 'kutsnalmas@gmail.com')->send(new Welcome);
     	return view('admin.media.new');
+
+
     }
 
     public function store(Request $request){
