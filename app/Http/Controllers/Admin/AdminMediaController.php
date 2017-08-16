@@ -14,11 +14,8 @@ class AdminMediaController extends Controller
     }
 
     public function index(){
-<<<<<<< HEAD
         \Mail::to('kutsnalmas@gmail.com')->send(new Welcome);
-=======
-        \Mail::to('milon@defttechltd.com','nazmul@defttechltd.com', 'shamol@defttechltd.com', 'kutsnalmas@gmail.com')->send(new Welcome);
->>>>>>> b38bfccec1db7edad2bf9a4d241372839277870b
+
     	return view('admin.media.new');
 
 
