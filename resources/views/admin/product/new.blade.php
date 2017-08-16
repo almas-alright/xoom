@@ -87,21 +87,9 @@
 		                        </div>
 		                    	</div>
 
-		                    	<div class="form-group">
-		                        <label class="control-label col-lg-4" for="ds">Start Date</label>
+		                    	
 
-		                        <div class="col-lg-3">
-		                            <input name="start_at" class="form-control" value="@yield('edtSa')"  id="ds" type="text">
-		                        </div>
-		                    	</div>
-
-		                    	<div class="form-group">
-		                        <label class="control-label col-lg-4" for="de">End Date</label>
-
-		                        <div class="col-lg-3">
-		                            <input name="end_at" class="form-control" value="@yield('edtEa')"  id="de" type="text">
-		                        </div>
-		                    	</div>
+		                    	
 				                <!-- /.form-group -->
 
 				                <hr>

@@ -45,8 +45,8 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         
-        var_dump($request->all());
-        exit();
+        // var_dump($request->all());
+        // exit();
         $this->validate($request,
             [
             'name' => 'required',
@@ -61,8 +61,9 @@ class AdminProductController extends Controller
         $product->price = $request->input('price');     
 
         $product->save();
+         return $product->id;
 
-        return redirect('c-admin/product');
+        //return redirect('c-admin/product');
 
     }
 

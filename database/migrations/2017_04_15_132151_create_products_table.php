@@ -19,8 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('name', 512);
             $table->longText('description');
             $table->float('price');
-            $table->date('start_at');
-            $table->date('end_at');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('products');
     }
 }
