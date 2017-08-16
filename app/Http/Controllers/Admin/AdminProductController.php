@@ -45,25 +45,20 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         
-
+        var_dump($request->all());
+        exit();
         $this->validate($request,
             [
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required',
-            'start_at' => 'required',
-            'end_at' => 'required',
+            'price' => 'required',            
             ]);
 
-        $sa = Carbon::createFromFormat('m-d-Y',$request->input('start_at'))->toDateString();
-        $ea = Carbon::createFromFormat('m-d-Y',$request->input('end_at'))->toDateString();
         $product = new product;
         $product->slug = str_slug($request->input('name'));
         $product->name = $request->input('name');
         $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->start_at = $sa;
-        $product->end_at = $ea;
+        $product->price = $request->input('price');     
 
         $product->save();
 
