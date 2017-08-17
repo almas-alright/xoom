@@ -61,7 +61,7 @@ class AdminProductController extends Controller
         $product->price = $request->input('price');     
 
         $product->save();
-         return $product->id;
+        return $product->id;
 
         //return redirect('c-admin/product');
 
